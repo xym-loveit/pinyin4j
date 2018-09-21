@@ -18,7 +18,7 @@ public class PinYinOptions {
     @Parameter(names = {"-if", "-infile"}, description = "待转换输入文件", required = false)
     private String inFile;
 
-    @Parameter(names = {"--help", "-h"}, description = "Help/Usage", help = true)
+    @Parameter(names = {"--help", "-h", "-man"}, description = "Help/Usage", help = true)
     private boolean help;
 
     public Integer getType() {
