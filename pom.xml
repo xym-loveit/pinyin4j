@@ -25,12 +25,20 @@
             <artifactId>jcommander</artifactId>
             <version>1.72</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.promeg/tinypinyin -->
         <dependency>
-            <groupId>com.github.obiteaaron</groupId>
-            <artifactId>pinyin4j-multi</artifactId>
-            <version>1.0.0</version>
+            <groupId>com.github.promeg</groupId>
+            <artifactId>tinypinyin</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.ahocorasick</groupId>
+            <artifactId>ahocorasick</artifactId>
+            <version>0.4.0</version>
         </dependency>
     </dependencies>
+
 
     <build>
 

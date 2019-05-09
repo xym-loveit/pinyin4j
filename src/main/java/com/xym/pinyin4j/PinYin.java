@@ -70,22 +70,22 @@ public class PinYin {
             String outStr;
             switch (type) {
                 case 1:
-                    outStr = Pinyin4jUtil.getPinyinToLowerCase(source);
+                    outStr = PinYinHelper.getPinyinToLowerCase(source);
                     break;
                 case 2:
-                    outStr = Pinyin4jUtil.getPinyinToUpperCase(source);
+                    outStr = PinYinHelper.getPinyinToUpperCase(source);
                     break;
                 case 3:
-                    outStr = Pinyin4jUtil.getPinyinFirstToUpperCase(source);
+                    outStr = PinYinHelper.getPinyinFirstToUpperCase(source);
                     break;
                 case 4:
-                    outStr = Pinyin4jUtil.getPinyinJianPin(source);
+                    outStr = PinYinHelper.getPinyinJianPin(source);
                     break;
                 case 5:
-                    outStr = Pinyin4jUtil.getPinyinJianPinLowerCase(source);
+                    outStr = PinYinHelper.getPinyinJianPinLowerCase(source);
                     break;
                 default:
-                    outStr = Pinyin4jUtil.getPinyinToLowerCase(source);
+                    outStr = PinYinHelper.getPinyinToLowerCase(source);
                     break;
             }
             return Optional.ofNullable(outStr);
