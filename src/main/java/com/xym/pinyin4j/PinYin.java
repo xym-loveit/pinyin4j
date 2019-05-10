@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -37,7 +38,7 @@ public class PinYin {
                 if (inFile.exists()) {
                     String outName = inFile.getName().replace(".", "_pinyin.");
                     Path outFile = Paths.get(outName);
-                    try (BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(pinYinOptions.getInFile()));
+                    try (BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(pinYinOptions.getInFile()), Charset.forName("GBK"));
                          BufferedWriter bufferedWriter = Files.newBufferedWriter(outFile, StandardOpenOption.CREATE)) {
                         Optional<String> lineOption;
                         while ((lineOption = getPinYinStr(pinYinOptions.getType(), bufferedReader.readLine())).isPresent()) {
