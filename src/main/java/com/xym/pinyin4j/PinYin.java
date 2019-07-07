@@ -83,10 +83,13 @@ public class PinYin {
                     outStr = PinYinHelper.getPinyinJianPin(source);
                     break;
                 case 5:
-                    outStr = PinYinHelper.getPinyinJianPinLowerCase(source);
+                    outStr = PinYinHelper.getPinyinToLowerCase(source);
+                    break;
+                case 6:
+                    outStr = PinYinHelper.getPinyinToLowerCaseWithFirst(source);
                     break;
                 default:
-                    outStr = PinYinHelper.getPinyinToLowerCase(source);
+                    outStr = PinYinHelper.getPinyinJianPinLowerCase(source);
                     break;
             }
             return Optional.ofNullable(outStr);

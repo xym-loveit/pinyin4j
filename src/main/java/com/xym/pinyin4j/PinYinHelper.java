@@ -3,8 +3,10 @@ package com.xym.pinyin4j;
 import com.github.promeg.pinyinhelper.Pinyin;
 import com.github.promeg.pinyinhelper.PinyinMapDict;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.regex.Pattern;
 
 /**
@@ -78,6 +80,25 @@ public class PinYinHelper {
     }
 
     /**
+     * 姓全拼小写+名首字母
+     *
+     * @param source
+     * @return
+     */
+    public static String getPinyinToLowerCaseWithFirst(String source) {
+        String pinyin = Pinyin.toPinyin(source, ",");
+        String[] strings = pinyin.toLowerCase().split(",");
+        return Optional.ofNullable(strings).map((ar) -> {
+            if (strings.length > 1) {
+                StringBuilder sb = new StringBuilder(strings[0]);
+                Arrays.stream(Arrays.copyOfRange(strings, 1, strings.length)).forEach(s -> sb.append(String.valueOf(s.charAt(0))));
+                return sb.toString().replaceAll(" ", "");
+            }
+            return strings[0].replaceAll(" ", "");
+        }).orElseThrow(IllegalArgumentException::new);
+    }
+
+    /**
      * 全拼大写
      *
      * @param source
@@ -133,5 +154,6 @@ public class PinYinHelper {
         //System.out.println(str);
         System.out.println(getPinyinFirstToUpperCase(strOrg));
         System.out.println(getPinyinJianPinLowerCase(strOrg));
+        System.out.println(getPinyinToLowerCaseWithFirst("王二狗"));
     }
 }
