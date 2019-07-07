@@ -18,6 +18,9 @@ public class PinYinOptions {
     @Parameter(names = {"-if", "-infile"}, description = "待转换输入文件", required = false)
     private String inFile;
 
+    @Parameter(names = {"-e", "-encoding"}, description = "文件编码格式", required = false)
+    private String encoding;
+
     @Parameter(names = {"--help", "-h", "-man"}, description = "Help/Usage", help = true)
     private boolean help;
 
@@ -51,5 +54,13 @@ public class PinYinOptions {
 
     public void setHelp(boolean help) {
         this.help = help;
+    }
+
+    public String getEncoding() {
+        return encoding;
+    }
+
+    public void setEncoding(String encoding) {
+        this.encoding = encoding;
     }
 }
