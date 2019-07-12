@@ -98,6 +98,26 @@ public class PinYinHelper {
         }).orElseThrow(IllegalArgumentException::new);
     }
 
+
+    /**
+     * 姓全拼小写+名首字母
+     *
+     * @param source
+     * @return
+     */
+    public static String getPinyinToLowerCaseWithFirstInversion(String source) {
+        String pinyin = Pinyin.toPinyin(source, ",");
+        String[] strings = pinyin.toLowerCase().split(",");
+        return Optional.ofNullable(strings).map((ar) -> {
+            if (strings.length > 1) {
+                StringBuilder sb = new StringBuilder();
+                Arrays.stream(Arrays.copyOfRange(strings, 1, strings.length)).forEach(s -> sb.append(String.valueOf(s.charAt(0))));
+                return sb.append(strings[0]).toString().replaceAll(" ", "");
+            }
+            return strings[0].replaceAll(" ", "");
+        }).orElseThrow(IllegalArgumentException::new);
+    }
+
     /**
      * 全拼大写
      *
@@ -152,8 +172,9 @@ public class PinYinHelper {
         //String str = getPinyinSimple(strOrg);
         //System.out.println(pingYin.toLowerCase());
         //System.out.println(str);
-        System.out.println(getPinyinFirstToUpperCase(strOrg));
-        System.out.println(getPinyinJianPinLowerCase(strOrg));
-        System.out.println(getPinyinToLowerCaseWithFirst("王二狗"));
+        //System.out.println(getPinyinFirstToUpperCase(strOrg));
+        //System.out.println(getPinyinJianPinLowerCase(strOrg));
+        System.out.println(getPinyinToLowerCaseWithFirst("吴先锋"));
+        System.out.println(getPinyinToLowerCaseWithFirstInversion("吴先锋"));
     }
 }
