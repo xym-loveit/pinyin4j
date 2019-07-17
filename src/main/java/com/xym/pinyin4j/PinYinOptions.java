@@ -12,7 +12,7 @@ public class PinYinOptions {
     @Parameter(names = {"-s", "-str"}, description = "待转换字符", required = false)
     private String source;
 
-    @Parameter(names = {"-t", "-type"}, description = "转换类型\n\t[1:小写全拼；2:大写全拼：3:首字符大写全拼；4:小写简写全拼；5:大写简写全拼；6:姓全拼，名首字母；7:选项6的外国人的姓名方式]", required = false)
+    @Parameter(names = {"-t", "-type"}, description = "转换类型\n\t[1:小写全拼；2:大写全拼：3:首字符大写全拼；4:小写简写全拼；5:大写简写全拼；6:姓全拼，名首字母；7:选项6的外国人的姓名方式；8:外国人的姓名方式，全拼小写]", required = false)
     private Integer type = 1;
 
     @Parameter(names = {"-if", "-infile"}, description = "待转换输入文件", required = false)

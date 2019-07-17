@@ -113,6 +113,9 @@ public class PinYin {
                 case 7:
                     outStr = PinYinHelper.getPinyinToLowerCaseWithFirstInversion(source);
                     break;
+                case 8:
+                    outStr = PinYinHelper.getPinyinToLowerCaseInversion(source);
+                    break;
                 default:
                     outStr = PinYinHelper.getPinyinJianPinLowerCase(source);
                     break;
