@@ -1,7 +1,6 @@
 package com.xym.pinyin4j;
 
 import com.beust.jcommander.JCommander;
-import tool.util.StringUtil;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -58,9 +57,7 @@ public class PinYin {
                     try (BufferedWriter bufferedWriter = Files.newBufferedWriter(outFile, StandardOpenOption.CREATE);
                          Stream<String> lines = Files.lines(Paths.get(pinYinOptions.getInFile()), Charset.forName(Optional.ofNullable(pinYinOptions.getEncoding()).orElse("GBK")))) {
                         lines.forEach(line -> {
-                            System.out.println("line--" + line);
                             if (null != pinYinOptions.getType()) {
-                                System.out.println("typessss=" + pinYinOptions.getType());
                                 getPinYinStr(pinYinOptions.getType(), line).ifPresent(ln -> {
                                     try {
                                         bufferedWriter.write(ln);
@@ -69,8 +66,7 @@ public class PinYin {
                                         e.printStackTrace();
                                     }
                                 });
-                            } else if (StringUtil.isNotBlank(pinYinOptions.getTypes())) {
-                                System.out.println("types=" + pinYinOptions.getTypes());
+                            } else if (StringUtils.isNotBlank(pinYinOptions.getTypes())) {
                                 Arrays.stream(pinYinOptions.getTypes().split(",")).forEach(t -> {
                                     getPinYinStr(Integer.valueOf(t), line).ifPresent(ln -> {
                                         try {
@@ -106,7 +102,6 @@ public class PinYin {
     }
 
     private static Optional<String> getPinYinStr(int type, String source) {
-        System.out.println("type=" + type);
         if (Optional.ofNullable(source).isPresent()) {
             String outStr;
             switch (type) {

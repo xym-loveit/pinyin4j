@@ -3,7 +3,6 @@ package com.xym.pinyin4j;
 import com.beust.jcommander.IParameterValidator2;
 import com.beust.jcommander.ParameterDescription;
 import com.beust.jcommander.ParameterException;
-import tool.util.StringUtil;
 
 import java.util.Arrays;
 
@@ -21,8 +20,8 @@ public class TypesValidator implements IParameterValidator2 {
 
     @Override
     public void validate(String name, String value) throws ParameterException {
-        if (StringUtil.isNotBlank(value)) {
-            if (Arrays.stream(value.split(",")).anyMatch((s) -> !StringUtil.isNumber(s))) {
+        if (StringUtils.isNotBlank(value)) {
+            if (Arrays.stream(value.split(",")).anyMatch((s) -> !StringUtils.isNumber(s))) {
                 throw new ParameterException("Parameter " + name + " should be numbers e.g. -ts 1,2,3,4");
             }
         }
