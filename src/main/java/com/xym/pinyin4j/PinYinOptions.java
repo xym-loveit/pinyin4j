@@ -13,7 +13,10 @@ public class PinYinOptions {
     private String source;
 
     @Parameter(names = {"-t", "-type"}, description = "转换类型\n\t[1:小写全拼；2:大写全拼：3:首字符大写全拼；4:小写简写全拼；5:大写简写全拼；6:姓全拼，名首字母；7:选项6的外国人的姓名方式；8:外国人的姓名方式，全拼小写]", required = false)
-    private Integer type = 1;
+    private Integer type;
+
+    @Parameter(names = {"-ts", "-types"}, validateWith = TypesValidator.class, description = "转换类型复数形式[e.g. -ts 1,2,3]，逗号分隔", required = false)
+    private String types;
 
     @Parameter(names = {"-if", "-infile"}, description = "待转换输入文件", required = false)
     private String inFile;
@@ -62,5 +65,13 @@ public class PinYinOptions {
 
     public void setEncoding(String encoding) {
         this.encoding = encoding;
+    }
+
+    public String getTypes() {
+        return types;
+    }
+
+    public void setTypes(String types) {
+        this.types = types;
     }
 }
