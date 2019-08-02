@@ -33,7 +33,7 @@ public class PinYin {
             }
 
             if (Optional.ofNullable(pinYinOptions.getSource()).isPresent()) {
-                Optional.ofNullable(getPinYinStr(pinYinOptions.getType(), pinYinOptions.getSource())).ifPresent(System.out::println);
+                getPinYinStr(pinYinOptions.getType(), pinYinOptions.getSource()).ifPresent(System.out::println);
             } else if (Optional.ofNullable(pinYinOptions.getInFile()).isPresent()) {
                 File inFile = Paths.get(pinYinOptions.getInFile()).toFile();
                 if (inFile.exists()) {
