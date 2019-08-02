@@ -87,17 +87,51 @@ public class PinYinHelper {
      * @param source
      * @return
      */
-    public static String getPinyinToLowerCaseWithFirst(String source) {
+    public static String getPinyinToLowerCaseWithFirstAndSeparator(String source, String separator) {
         String pinyin = Pinyin.toPinyin(source, ",");
         String[] strings = pinyin.toLowerCase().split(",");
         return Optional.ofNullable(strings).map((ar) -> {
             if (strings.length > 1) {
                 StringBuilder sb = new StringBuilder(strings[0]);
+                Optional.ofNullable(separator).ifPresent(sb::append);
                 Arrays.stream(Arrays.copyOfRange(strings, 1, strings.length)).forEach(s -> sb.append(String.valueOf(s.charAt(0))));
                 return sb.toString().replaceAll(" ", "");
             }
             return strings[0].replaceAll(" ", "");
         }).orElseThrow(IllegalArgumentException::new);
+    }
+
+    /**
+     * 姓全拼小写+姓名小写简拼
+     *
+     * @param source
+     * @return
+     */
+    public static String getPinyinToLowerCaseAndSpecial(String source, String separator) {
+        String pinyin = Pinyin.toPinyin(source, ",");
+        String[] strings = pinyin.toLowerCase().split(",");
+        return Optional.ofNullable(strings).map((ar) -> {
+            if (ar.length > 1) {
+                StringBuilder sb = new StringBuilder(ar[0]);
+                Optional.ofNullable(separator).ifPresent(sb::append);
+                for (int i = 0; i < ar.length; i++) {
+                    String string = ar[i];
+                    sb.append(string.charAt(0));
+                }
+                return sb.toString().replaceAll(" ", "");
+            }
+            return strings[0].replaceAll(" ", "");
+        }).orElseThrow(IllegalArgumentException::new);
+    }
+
+    /**
+     * 姓全拼小写+名首字母
+     *
+     * @param source
+     * @return
+     */
+    public static String getPinyinToLowerCaseWithFirst(String source) {
+        return getPinyinToLowerCaseWithFirstAndSeparator(source, null);
     }
 
 
@@ -196,7 +230,8 @@ public class PinYinHelper {
         //System.out.println(getPinyinFirstToUpperCase(strOrg));
         //System.out.println(getPinyinJianPinLowerCase(strOrg));
         //System.out.println(getPinyinToLowerCaseWithFirst("吴先锋"));
+        System.out.println(getPinyinToLowerCaseAndSpecial("吴先锋", "_"));
         //System.out.println(getPinyinToLowerCaseWithFirstInversion("吴先锋"));
-        System.out.println(getPinyinToLowerCaseInversion("吴先锋"));
+        //System.out.println(getPinyinToLowerCaseInversion("吴先锋"));
     }
 }

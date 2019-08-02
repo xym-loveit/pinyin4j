@@ -129,6 +129,12 @@ public class PinYin {
                 case 8:
                     outStr = PinYinHelper.getPinyinToLowerCaseInversion(source);
                     break;
+                case 9:
+                    outStr = PinYinHelper.getPinyinToLowerCaseWithFirstAndSeparator(source, "_");
+                    break;
+                case 10:
+                    outStr = PinYinHelper.getPinyinToLowerCaseAndSpecial(source, "_");
+                    break;
                 default:
                     outStr = PinYinHelper.getPinyinJianPinLowerCase(source);
                     break;
